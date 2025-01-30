@@ -1,2 +1,3 @@
 # -6Companies30DaysChallenges
-I developed a webpage using 30Days classes that uses to build the connection occurs. 
+In this challenge i will complete 90 Question in 30days.
+And this will complete in 30days.
