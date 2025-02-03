@@ -1,0 +1,14 @@
+class Solution {
+    static int res[];
+    public static void sub(int nums[], int k, int i, ArrayList<Integer> list){
+        // case of include
+        list.add()
+        sub(nums,k,i,list);
+        // case of exclude
+    }
+    public int[] maxSubsequence(int[] nums, int k) {
+        res = new int[2];
+        ArrayList<Integer> list = new ArrayList<>();
+        sub(nums,k,0,list);
+    }
+}
