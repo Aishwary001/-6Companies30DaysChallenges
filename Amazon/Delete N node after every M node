@@ -1,0 +1,35 @@
+public class Solution {
+    public static Node<Integer> getListAfterDeleteOperation(Node<Integer> head, int n, int m) {
+        if (head == null) return null; // Edge case: empty list
+        
+        Node<Integer> dummy = new Node<>(0);  // Dummy node for easier handling
+        dummy.next = head;
+        Node<Integer> cur = dummy;
+
+        while (cur != null && cur.next != null) {
+            // Move m nodes ahead (keeping them)
+            int count_m = 0;
+            while (count_m < m && cur.next != null) {
+                cur = cur.next;
+                count_m++;
+            }
+
+            // If cur reaches the end, break
+            if (cur == null) break;
+
+            // Start deleting next n nodes
+            Node<Integer> temp = cur;
+            int count_n = 0;
+            while (count_n < n && temp.next != null) {
+                temp = temp.next;
+                count_n++;
+            }
+
+            // Connect remaining list after deletion
+            cur.next = temp.next;
+            // cur = cur.next;
+        }
+
+        return dummy.next;  // Return the updated head
+    }
+}
