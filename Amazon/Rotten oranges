@@ -1,0 +1,51 @@
+class Solution {
+    public int orangesRotting(int[][] grid) {
+        int n = grid.length;
+        int m = grid[0].length;
+        int i = 0;
+        int j = 0;
+        for(; i<n; i++){
+            for(; j<m; j++){
+                if(grid[i][j] == 2){
+                   break;
+                }
+            }
+        }
+        int time = 0;
+        Queue<int[]> q = new LinkedList<>();
+        q.offer(new int[]{i,j});
+        // int time = 0;
+        int directions[][] = {{0,1},{0,-1},{-1,0},{1,0}};
+        while(!q.isEmpty()){
+                int size = q.size();
+                while(size > 0){
+                    int arr[] = q.poll();
+                int x = arr[0];
+                int y = arr[1];
+                for(int direction[] : directions){
+                    int new_x = x + direction[0];
+                    int new_y = y + direction[1];
+
+                    if(new_x < n && new_x >=0 && new_y < n && new_y >= 0 && grid[new_x][new_y] == 1){
+                        grid[new_x][new_y] = 2;
+                        q.offer(new int[]{new_x,new_y});
+                    }else if(new_x < n && new_x >=0 && new_y < n && new_y >= 0 && grid[new_x][new_y] == 2){
+                        q.offer(new int[]{new_x,new_y});
+                    }
+                }
+                size--;
+            }
+            time++;
+        }
+
+        for(int k=0; k<grid.length; k++){
+            for(int l=0; l<grid[k].length; l++){
+                if(grid[k][l] == 1){
+                    return -1;
+                }
+            }
+        }
+
+        return time;
+    }
+}
